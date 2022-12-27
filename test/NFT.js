@@ -77,60 +77,6 @@ describe("NFT", function () {
         });
     });
 
-    // describe("MintBatch", function () {
-    //     describe("Verify", function () {
-    //         it("Should revert with a right error if mint by other account", async function () {
-    //             const {nft, otherAccount} = await loadFixture(deploeyNFT);
-    //             await expect(nft.connect(otherAccount).mint(otherAccount.address, 1, "https://z374q654zv.feishu.cn/docx/PxeAdrGPVoR6FAx6iYIc1FpXnXg")).to.be.revertedWith("Not admin");
-    //         });
-
-    //         it("Should revert with a right error if two arrays'length are not same", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    //             const urls = [uri, uri, uri, uri];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).to.be.revertedWith("TokenIds and TokenUrls must have same length");
-    //         });
-
-    //         it("Should revert with a right error if ids has two same tokens", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4, 4];
-    //             const urls = [uri, uri, uri, uri, uri];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).to.be.revertedWith("This token has owner");
-    //         });
-
-    //         it("Should revert with a right error if urls has a null url", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4];
-    //             const urls = [uri, uri, uri, ""];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).to.be.revertedWith("TokenUrl can not be null");
-    //         });
-
-    //         it("MintBatch succfully", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4];
-    //             const urls = [uri, uri, uri, uri];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).not.to.be.reverted;
-    //         });
-    //     });
-
-    //     describe("Event", function () {
-    //         it("Should emit a right evnt if mintBatch tokens", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4];
-    //             const urls = [uri, uri, uri, uri];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).to.emit(nft, "MintBatch").withArgs(ids, admin.address);
-    //         });
-
-    //         it("Should emit a TransferBatch event if mintBatch tokens", async function () {
-    //             const {nft, uri, admin} = await loadFixture(deploeyNFT);
-    //             const ids = [1, 2, 3, 4];
-    //             const urls = [uri, uri, uri, uri];
-    //             const amounts = [1, 1, 1, 1];
-    //             await expect(nft.mintBatch(admin.address, ids, urls)).to.emit(nft, "TransferBatch").withArgs(admin.address, AddressZero, admin.address, ids, amounts);
-    //         });
-    //     });
-    // });
-
     describe("Approved", function () {
         describe("Verify", function () {
             it("Should not approve if operator is self", async function () {
@@ -206,5 +152,5 @@ describe("NFT", function () {
         });
     });
 
-    // describe("Transfer")
+    describe("Transfer")
 });

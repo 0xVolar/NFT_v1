@@ -31,19 +31,6 @@ contract NFT is ERC1155 {
         _;
     }
 
-    // modifier checkLock(uint _tokenId) {
-    //     require(block.number > lockTime[_tokenId], "Token is locked");
-    //     _;
-    // }
-
-    // modifier checkLocks(uint[] memory _tokenIds) {
-    //     for (uint256 i = 0; i< _tokenIds.length; i++) {
-    //         require(block.number > lockTime[_tokenIds[i]], "Token is locked");
-    //     }    
-    //     _;
-        
-    // }
-
     constructor(string memory _name, string memory _symbol, uint _duration, string memory _uri) public ERC1155(_uri) {
         name = _name;
         symbol = _symbol;
@@ -62,29 +49,8 @@ contract NFT is ERC1155 {
         return _tokenId;
     }
 
-    //批量产生有待商议
-    // function mintBatch(address _to, uint[] memory _tokenIds, string[] memory _tokenUrls) public isAdmin() returns(uint[] memory tokenIds) {
-    //     require(_tokenIds.length == _tokenUrls.length, "TokenIds and TokenUrls must have same length");
-    //     uint[] memory _amounts = new uint[](_tokenIds.length);
-    //     for(uint i = 0; i < _tokenUrls.length; i++) {
-    //         require(ownerOfToken[_tokenIds[i]] == address(0), "This token has owner");
-    //         require(bytes(_tokenUrls[i]).length != 0, "TokenUrl can not be null");
-    //         ownerOfToken[_tokenIds[i]] = _to;
-    //         tokenUrl[_tokenIds[i]] = _tokenUrls[i];
-    //         lockTime[_tokenIds[i]] = block.number + duration;
-    //         balanceOfToken[_to] = balanceOfToken[_to].add(1);
-    //         _amounts[i] = 1;
-    //     }
-    //     _mintBatch(_to, _tokenIds, _amounts, "");
-    //     emit MintBatch(_tokenIds, _to);
-    //     return _tokenIds;
-    // }
-
     function burn(uint _tokenId) public isOwnerOrApproved(_tokenId) returns(bool) {
         address _owner = ownerOfToken[_tokenId];
-        // delete ownerOfToken[_tokenId];
-        // delete lockTime[_tokenId];
-        // balanceOfToken[_owner] = balanceOfToken[_owner].sub(1);
         _burn(_owner, _tokenId, 1);
         emit Burn(_tokenId, msg.sender);
         return true;
@@ -107,7 +73,7 @@ contract NFT is ERC1155 {
         }       
    }
 
- 
+
     function getUrl(uint _tokenId) public view returns(string memory TokenUrl) {
         return tokenUrl[_tokenId];
     }
@@ -125,7 +91,5 @@ contract NFT is ERC1155 {
         array[0] = element;
 
         return array;
-    }
-    
-    
+    }  
 }
