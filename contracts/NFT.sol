@@ -86,10 +86,4 @@ contract NFT is ERC1155 {
         return balanceOfToken[_owner];
     }
 
-    function asSingletonArray(uint256 element) private pure returns (uint256[] memory) {
-        uint256[] memory array = new uint256[](1);
-        array[0] = element;
-
-        return array;
-    }  
 }
